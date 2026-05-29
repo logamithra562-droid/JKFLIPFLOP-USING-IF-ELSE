@@ -38,13 +38,43 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:25005891;module jkff(j,k,clk,q,qbar); input j,k,clk; output reg q,qbar; initial begin q=1'b0; q=1'b1; end always @(posedge clk) begin q<=(j&~q)|(~k&q); qbar<=~q; end endmodule
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:212225040201;
 
 
-RTL LOGIC FOR FLIPFLOPS:<img width="1078" height="330" alt="Screenshot 2025-10-28 112009" src="https://github.com/user-attachments/assets/b74e6fe8-41a9-4923-a17e-8538f14625eb" />
+module digital5(
+input clk,
+input j,
+input k,
+output reg q,
+output reg qbar
+);
+
+always @(posedge clk) begin
+if (j == 0 && k == 0) begin
+    q <= q;
+    qbar <= qbar;
+end 
+else if (j == 0 && k == 1) begin
+    q <= 0;
+    qbar <= 1;
+end 
+else if (j == 1 && k == 0) begin
+    q <= 1;
+    qbar <= 0;
+end 
+else if (j == 1 && k == 1) begin
+    q <= ~q;
+    qbar <= ~qbar;
+end
+end
+
+endmodule
 
 
-TIMING DIGRAMS FOR FLIP FLOPS:<img width="1048" height="334" alt="Screenshot 2025-10-28 112028" src="https://github.com/user-attachments/assets/b5620f2b-c7bb-4bb6-a1cf-45463ca90ced" />
+RTL LOGIC FOR FLIPFLOPS:<img width="919" height="388" alt="Screenshot 2026-05-29 200012" src="https://github.com/user-attachments/assets/23942f60-cb17-4b24-87b9-dc796af180ff" />
+
+
+TIMING DIGRAMS FOR FLIP FLOPS:<img width="1270" height="654" alt="Screenshot 2026-05-29 200026" src="https://github.com/user-attachments/assets/4507b5b2-bb22-493b-9d32-5ebdcf77f4df" />
 
 
 RESULTS:Thus the Serial-in and Serial-out Register is designed and is verified using Quartus software
